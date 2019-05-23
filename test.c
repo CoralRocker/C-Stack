@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "Stack.h"
 
-void printStack(Stack s)
+void printStack(Stack os)
 {
-	while(s._size != 0)
+	Stack s = os;
+	printf("Stack Contents: (Higher Position In Stack Means Closer To Top)\n");
+	while(s._size > 0)
 	{
-		printf("%d\t", topStack(&s));
+		printf("Stack Position %d: %d\n", s._size, topStack(&s));
 		popStack(&s);
 	}
 }
@@ -18,13 +20,9 @@ int main()
 	pushStack(s, 20);
 	pushStack(s, 5);
 	pushStack(s, 1);
-
-	printf("Stack: ");
+	printf("Top: %d\n", topStack(s));
+	printf("Stack:\n");
 	printStack(*s);
 
-	printf("\nStack Size: %d\n", s->_size);
-	printf("Stack Top: %d\n", topStack(s));
-
-	printf("Stack Pop: ");
-	popSt
+	freeStack(s);
 }
